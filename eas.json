@@ -1,0 +1,37 @@
+{
+  "cli": {
+    "version": ">= 16.26.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "env": {
+          "ENABLE_HERMES": "true",
+          "ANDROID_ENABLE_MINIFY_IN_RELEASE_BUILDS": "true",
+          "ANDROID_ENABLE_SHRINK_RESOURCES_IN_RELEASE_BUILDS": "true",
+          "ANDROID_ENABLE_PNG_CRUNCH_IN_RELEASE_BUILDS": "true"
+        }
+      },
+      "distribution": "internal"
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle",
+        "env": {
+          "ENABLE_HERMES": "true"
+        }
+      },
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
